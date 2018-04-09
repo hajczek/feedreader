@@ -23,5 +23,9 @@ Test suite based on [Jasmine](http://jasmine.github.io/) for a web-based applica
 1. Server (local or external).
 2. Browser with JavaScript enabled.
 
+## LINK TO APPLICATION ONLINE
+
+[Feed Reader Testing](http://www.serwisstron.pl/feedreader)
+
 ## LICENSE
 The MIT License - See [license.md](https://github.com/hajczek/feedreader/blob/master/license/License.md)
