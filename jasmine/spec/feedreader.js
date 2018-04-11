@@ -29,21 +29,23 @@ $(function() {
     });
 
     // Test for menu    
-    describe('The menu', function() {             
+    describe('The menu', function() {
+        
+        let body = $('body');
         
         // Test that ensures the menu element is hidden by default. 
         it('is hidden by default', function() {            
-            expect($('body').attr('class')).toBe('menu-hidden');
-        });
+            expect(body.hasClass('menu-hidden')).toBe(true);
+        });;
         
          // Test that ensures the menu changes visibility when the menu icon is clicked.        
         it('is visible after click on menu icon and is hidden after second click on menu icon', function() {
             
             $('.menu-icon-link').click();
-            expect($('body').attr('class')).not.toBe('menu-hidden');
+            expect(body.hasClass('menu-hidden')).not.toBe(true);
 
             $('.menu-icon-link').click();
-            expect($('body').attr('class')).toBe('menu-hidden');
+            expect(body.hasClass('menu-hidden')).toBe(true);
         });
         
     });
@@ -59,9 +61,8 @@ $(function() {
         });
 
         it('puts element entry in the feed container', function(done) {
-            var feed = $('.feed').html();
             loadFeed(1, function() {
-                expect(feed).toMatch('entry');
+                expect($('.feed .entry')).toBeDefined();
                 done();
             });
         
@@ -72,19 +73,19 @@ $(function() {
     // Test that ensures when a new feed is loaded by the loadFeed function that the content actually changes.    
     describe('New Feed Selection', function() {
         
-        var content;
-        var contentNew;
+        let content;
+        let contentNew;
     
          beforeEach(function(done) {
             loadFeed(0, function() {
-                content = $('body').html();
+                content = $('.feed').html();
                 done();
             });
         });
     
         it('changes content', function(done) {
             loadFeed(1, function() {
-                contentNew = $('body').html();
+                contentNew = $('.feed').html();
                 expect(contentNew).not.toBe(content);
             done();
             });
